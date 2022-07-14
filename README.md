@@ -1,2 +1,2 @@
-# kandy-distant-toolkit
-Kandy Distant Tookit
+# kandy-distant-js
+Kandy Distant JS

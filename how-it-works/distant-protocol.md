@@ -101,7 +101,7 @@ package distant;
 /**
  * Start a session with the corresponding id and target_url.
  *
- * Once started, the session will attempt to open the entry_url in order to load the remote
+ * Once started, the session will attempt to open the target_url in order to load the remote
  * application. The controller may support the distant file access protocol, and in such circumstances
  * a URL using the `distant` scheme will attempt to load the file from the
  *

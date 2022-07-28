@@ -13,7 +13,7 @@ Kandy Distant JS change log.
 ### Changed
 - `vchannel`
   - Bump protobufjs from 6.8.9 to 6.11.3.
-- Remove Update Session from documentation and from Distant JS. `KAJ-1248`
+- Removed "Update Session" from documentation and from Distant JS. `KAJ-1248`
 - Browser errors are now caught when starting a session. `KAJ-1273`
 
 ## 1.0.0

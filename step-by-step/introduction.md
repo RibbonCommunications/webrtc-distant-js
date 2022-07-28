@@ -1,6 +1,6 @@
 # About
 
-In the next few sections we will walk through the steps necessary to building a successful Distant application. We will try to adhere to certain principles that will allow this application to be easily maintained and extended in the future.
+In the next few sections we will walk through the steps necessary to build a successful Distant application. We will try to adhere to certain principles that will allow this application to be easily maintained and extended in the future.
 
 ## Assumptions
 

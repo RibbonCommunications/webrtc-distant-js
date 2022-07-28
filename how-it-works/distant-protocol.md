@@ -219,7 +219,7 @@ sequenceDiagram
 participant Controller
 participant Remote as Remote Agent
 
-Controller->>Remote: SessionStart { id: 1 , entry_url: 'https://myremoteapp.com' }
+Controller->>Remote: SessionStart { id: 1 , targetUrl: 'https://myremoteapp.com' }
 activate Remote
 alt Session doesn't exist
 Remote->Session: create
@@ -244,7 +244,7 @@ prev_state = {
 
 current_state = {
   id: 1,
-  entry_url: 'https://myremoteapp.com',
+  targetUrl: 'https://myremoteapp.com',
   status: READY,
   error: ''
 }
@@ -257,7 +257,7 @@ The id of a session is determined by the session creator. As such it's possible 
 ```mermaid
 sequenceDiagram
 
-Controller->>Remote: SessionStart { id: 1 , entry_url: 'https://myremoteapp.com' }
+Controller->>Remote: SessionStart { id: 1 , targetUrl: 'https://myremoteapp.com' }
 activate Remote
 alt Session already exists
 Remote->>Controller: SessionEvent { id: 1, prev_state, current_state }
@@ -271,14 +271,14 @@ The `prev_state` and `current_state` will have the following information for a s
 ```javascript
 prev_state = {
   id: 1,
-  entry_url: 'https://myremoteapp.com',
+  targetUrl: 'https://myremoteapp.com',
   status: READY,
   error: ''
 }
 
 current_state = {
   id: 1,
-  entry_url: 'https://myremoteapp.com',
+  targetUrl: 'https://myremoteapp.com',
   status: READY,
   error: ''
 }
@@ -291,7 +291,7 @@ When creating a session, it's possible that this process doesn't succeed for a v
 ```mermaid
 sequenceDiagram
 
-Controller->>Remote: SessionStart { id: 1 , entry_url: 'https://myremoteapp.com' }
+Controller->>Remote: SessionStart { id: 1 , targetUrl: 'https://myremoteapp.com' }
 activate Remote
 alt Session doesn't exist
 Remote->>Session: create
@@ -309,14 +309,14 @@ The `prev_state` and `current_state` will have the following information for a s
 ```javascript
 prev_state = {
   id: 1,
-  entry_url: '',
+  targetUrl: '',
   status: UNKNOWN,
   error: ''
 }
 
 current_state = {
   id: 1,
-  entry_url: '',
+  targetUrl: '',
   status: ERROR,
   error: 'The session failed to be created because of some reason'
 }
@@ -348,14 +348,14 @@ The `prev_state` and `current_state` will have the following information for a s
 ```javascript
 prev_state = {
   id: 1,
-  entry_url: 'https://myremoteapp.com',
+  targetUrl: 'https://myremoteapp.com',
   status: READY,
   error: ''
 }
 
 current_state = {
   id: 1,
-  entry_url: '',
+  targetUrl: '',
   status: CLOSED,
   error: ''
 }
@@ -381,14 +381,14 @@ The `prev_state` and `current_state` will have the following information for a s
 ```javascript
 prev_state = {
   id: 1,
-  entry_url: '',
+  targetUrl: '',
   status: UNKNOWN,
   error: ''
 }
 
 current_state = {
   id: 1,
-  entry_url: '',
+  targetUrl: '',
   status: UNKNOWN,
   error: ''
 }

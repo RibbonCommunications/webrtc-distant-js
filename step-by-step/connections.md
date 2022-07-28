@@ -4,7 +4,7 @@ Now that we have our application and our remote application, it's time to make t
 
 ## Messages
 
-The messages used by the 2 parts of the application are application defined. Meaning it's up to the user of Distant to define the format of the message.
+The messages used by the 2 parts of the application are application defined, meaning it's up to the user of Distant to define the format of the message.
 
 We suggest using a standard encoding such as JSON and a standard structure for your messages such as [Flux Standard Actions](https://github.com/redux-utilities/flux-standard-action)
 

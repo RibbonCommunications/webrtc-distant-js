@@ -196,7 +196,7 @@ Here is an example of a start session message when translated to a JavaScript fo
 const startSessionMessage = {
   start: {
     id: 1,
-    // Note that bellow we use the camel case version of the field. This is a standard
+    // Note that below we use the camel case version of the field. This is a standard
     // behavior for protobuf.js framework.
     targetUrl: 'https://myremote.org'
   }

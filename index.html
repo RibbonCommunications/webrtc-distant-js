@@ -1,0 +1,89 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Distant Toolkit Documentation</title>
+    <link rel="stylesheet" href="https://unpkg.com/docute@4/dist/docute.css" />
+  </head>
+  <body>
+    <div id="docute"></div>
+    <script src="https://unpkg.com/docute@4/dist/docute.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.0.0/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@leptosia/docute-mermaid@1/dist/index.min.js"></script>
+    <script>
+      mermaid.initialize({
+        theme: 'neutral',
+        sequence: {
+          diagramMarginX: 10,
+          diagramMarginY: 20,
+          useMaxWidth: false,
+          messageMargin: 30,
+          noteMargin: 30,
+          actorMargin: 120,
+          boxTextMargin: 30
+        },
+        flowchart: {
+          useMaxWidth: false
+        }
+      })
+
+      new Docute({
+        target: '#docute',
+        highlight: ['protobuf', 'shell', 'bash'],
+        plugins: [docuteMermaid()],
+        nav: [
+          {
+            title: 'Home',
+            link: '/'
+          }
+        ],
+        sidebar: [
+          // A sidebar item, with multiple sub-links
+          { title: 'Introduction', link: '/' },
+          {
+            title: 'Information', // Optional
+            links: [
+              {
+                title: 'Getting Started',
+                link: '/guide/getting-started'
+              },
+              {
+                title: 'Module Packages',
+                link: '/guide/modules'
+              },
+              {
+                title: 'Application Layout',
+                link: '/guide/application-layout'
+              }
+            ]
+          },
+          {
+            title: 'Step-By-Step',
+            links: [
+              { title: 'About', link: '/step-by-step/introduction' },
+              {
+                title: 'Starting small',
+                link: '/step-by-step/starting-small'
+              },
+              { title: 'Remote Application', link: '/step-by-step/remote-app' },
+              { title: 'Connections', link: '/step-by-step/connections' },
+              { title: 'WebRTC', link: '/step-by-step/webrtc' },
+              { title: 'VDI', link: '/step-by-step/vdi' },
+              { title: 'Tracking', link: '/step-by-step/tracking' }
+            ]
+          },
+          {
+            title: 'How it works',
+            links: [
+              {
+                title: 'Distant Protocol',
+                link: '/how-it-works/distant-protocol'
+              }
+            ]
+          }
+        ]
+      })
+    </script>
+  </body>
+</html>

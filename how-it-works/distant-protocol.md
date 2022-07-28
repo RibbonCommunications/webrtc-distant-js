@@ -72,7 +72,7 @@ data = "hello beautiful world!"
 
 ### Performance considerations
 
-The simple protocol above might have some performance issues that have to lookout for. Since it relies on sending a fragmented packet all together (no interweaving of packets), it means that a large packet could monopolize the channel resources for an extended period of time.
+The simple protocol above might have some performance issues. Since it relies on sending a fragmented packet all together (no interweaving of packets), it means that a large packet could monopolize channel resources for an extended period of time.
 
 We might need to roll-up packet interweaving, prioritization queues, etc. This should not be done initially but instead based on performance testing.
 

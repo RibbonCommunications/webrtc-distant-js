@@ -8,7 +8,7 @@ The messages used by the 2 parts of the application are application defined, mea
 
 We suggest using a standard encoding such as JSON and a standard structure for your messages such as [Flux Standard Actions](https://github.com/redux-utilities/flux-standard-action)
 
-Then we can start defining messages that our remote application will respond to and perform operation.
+Then we can start defining messages that our remote application will respond to by performing operations.
 
 Let's define a simple message to move the window, it will look like this:
 

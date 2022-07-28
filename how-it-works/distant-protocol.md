@@ -418,7 +418,7 @@ The `prev_state` and `current_state` will have the following information for a s
 ```javascript
 prev_state = {
   id: 1,
-  entry_url: 'https://myremoteapp.com',
+  targetUrl: 'https://myremoteapp.com',
   status: READY,
   error: ''
 }

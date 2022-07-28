@@ -98,7 +98,7 @@ async function createDistantConnection(mode) {
 
 So now we have an appropriate connection type for Distant. Are we done? Not quite.
 
-Currently VDI requires packetization, this will eventually be built into a package that aggregates vchannel, pull-vchannel and the packetization codec, but in the meantime we have to handle it manually.
+Currently, VDI requires packetization. This will eventually be built into a package that aggregates vchannel, pull-vchannel and the packetization codec, but in the meantime we have to handle it manually.
 
 ```javascript {highlight:['1-3', '16-20']}
 import { pull } from 'pull-stream'

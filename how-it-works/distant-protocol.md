@@ -237,7 +237,7 @@ The `prev_state` and `current_state` will have the following information for a s
 ```javascript
 prev_state = {
   id: 1,
-  entry_url: '',
+  targetUrl: '',
   status: UNKNOWN,
   error: ''
 }

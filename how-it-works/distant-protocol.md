@@ -458,7 +458,7 @@ Here is an example for the values of prev_state and current_state:
 ```javascript
 prev_state = {
   id: 1,
-  entry_url: 'https://myremoteapp.com',
+  targetUrl: 'https://myremoteapp.com',
   status: READY,
   error: ''
 }

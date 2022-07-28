@@ -242,4 +242,4 @@ After the Kandy SDK has been prepared for proxy mode, all WebRTC related operati
 
 The only caveat is about rendering media. When in proxy mode, the SDK will know about the media being used by the Remote SDK. This can cause odd scenarios if the application tries to use the media locally, but it doesn't exist. It shouldn't create issues, but you may see error messages in the logs depending on how the application handles these scenarios.
 
-Have the application use the Kandy.js SDK "render" APIs as you would normally use them, but use the html selector for an emelment that is located in the remote application.
+Have the application use the Kandy.js SDK "render" APIs as you would normally use them, but use the html selector for an element that is located in the remote application.

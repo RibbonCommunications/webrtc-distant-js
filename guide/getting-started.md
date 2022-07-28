@@ -4,7 +4,7 @@
 
 ### JavaScript packages
 
-All of the javascript libraries are provided as Node modules that can also run in the browser using a package bundler like WebPack, Rollup, Parcel.
+All of the JavaScript libraries are provided as Node modules that can also run in the browser using a package bundler like WebPack, Rollup, Parcel.
 
 Using npm:
 

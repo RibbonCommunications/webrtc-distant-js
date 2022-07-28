@@ -6,13 +6,13 @@ So far we have been using Distant Web only as a distant agent. Let's see what it
 
 The `@distant/vchannel` package is used to communicate over the Citrix Virtual Channel to the distant-vdi remote agent.
 
-This package contains native bindings to a native C++ library called the Citrix WinFrame Library in order to connect to the channel. This library currently only runs in windows as such this mode is for windows exclusively.
+This package contains native bindings to a C++ library called the Citrix WinFrame Library in order to connect to the channel. This library currently only runs in Windows; therefore, this mode is for Windows exclusively.
 
 Additionally, vchannel can only run in a Node.js process as it is also a Node Add-On.
 
 ## Electron processes
 
-The process model of Electron will inform us on how we will be using the vchannel package. Namely electron consists of a main Node.js based process that manages multiple BrowserWindow processes.
+The process model of Electron will inform us on how we will be using the vchannel package. Namely, electron consists of a main Node.js based process that manages multiple BrowserWindow processes.
 
 So far we have not made clear the location of the code that is responsible for talking to Distant. Now we see that some parts (at least the `vchannel`) must run inside the Node.js main electron process.
 

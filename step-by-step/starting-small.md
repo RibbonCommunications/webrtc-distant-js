@@ -22,7 +22,7 @@ function initializeDistant() {
 }
 ```
 
-Here we create 2 things. First we create a connection to Distant Web. Since Distant Web simply runs in the browser, there is no need to provide an address or anything else. It is simply an in process Distant Remote Agent. Then once the connection is successful (💡 It always is for distant web running in a browser) we create a Distant Controller with this connection.
+Here we create 2 things. First we create a connection to Distant Web. Since Distant Web simply runs in the browser, there is no need to provide an address or anything else. It is simply an in process Distant Remote Agent. Then once the connection is successful (💡 It always is for Distant Web running in a browser) we create a Distant Controller with this connection.
 
 <blockquote>
 
@@ -66,7 +66,7 @@ async function createSession(controller, sessionId, url) {
     return session
   } catch(err) {
 
-    // We had an error while creating the session, it's possible that the creation timed-out.
+    // We had an error while creating the session. It's possible that the creation timed-out.
     console.log(err.message)
   }
 }
@@ -89,6 +89,6 @@ showSessionButton.addEventListener('click', event => {
 
 Hmmm... why don't we see anything?
 
-This is because distant doesn't define a protocol for controlling a window size, or showing/hiding it. It leaves all of the control of the remote application to the application. So if the application wants to show the distant session, it needs to ask the session to show itself via a custom, application-defined message.
+This is because Distant doesn't define a protocol for controlling a window's size, or showing/hiding it. It leaves all control of the remote application to the controller application. So if the application wants to show the Distant session, it needs to ask the session to show itself via a custom, application-defined message.
 
 Let's move on to the next step and introduce the Distant Remote Application in order to show how this can be done.

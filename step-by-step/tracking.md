@@ -1,10 +1,10 @@
 # Tracking
 
-Having successfully created a remote session in VDI mode in a Citrix environment, you may want to render your media elements inside your remote application. But you'll want to give the impression that the video elements are part of your controller application. To do so, we will monitor the bounds and visibility of controller application's window and its video elements using the tracker package, and report these updates to the remote application so that it can position the video elements correctly.
+Having successfully created a remote session in VDI mode in a Citrix environment, you may want to render your media elements inside your remote application. But you'll want to give the impression that the video elements are part of your controller application. To do so, we will monitor the bounds and visibility of the controller application's window and its video elements using the tracker package, and report these updates to the remote application so that it can position the video elements correctly.
 
 ## tracker
 
-The `@distant/tracker` package provides 3 tracking creator functions: `createElementTracker`, `createWindowTracker` and `createScreenTracker`. Element trackers and window trackers enable us to report bounds and visibility for Electron windows and for DOM elements. A screen tracker can be used to normalize window bounds. This is needed because the remote and controller operating systems may use a different point as the origin for screen coordinates and also may be using different DPI scaling.
+The `@distant/tracker` package provides 3 tracking creator functions: `createElementTracker`, `createWindowTracker` and `createScreenTracker`. Element trackers and window trackers enable us to report bounds and visibility for Electron windows and for DOM elements. A screen tracker can be used to normalize window bounds. This is needed because the remote and controller operating systems may use a different point of origin for screen coordinates and may also use different DPI scaling.
 
 ```javascript {highlight: [7, 8]}
 import { createElementTracker, createWindowTracker, createScreenTracker } from '@distant/tracker'
@@ -62,8 +62,8 @@ A screen tracker uses a different event type:
 ## Normalizing Window Bounds with Screen Tracker
 The screen tracker provides functions that can help create logic to normalize window bounds between different operating systems.
 
-- getTopLeftPoint() which returns the coordinates of the top-leftmost point of the aggregate screen space. This can be used as an offset for when the screen origin differ between the two sides of a Distant session. For example, Windows sets the origin as the top left of the primary monitor, while eLux sets the origin as the top left of the screen space.
-- getDPIScale() which returns the display's DPI scale. This can be used to transform a bounds object when the DPI scale differ between both sides of a Distant session.
+- getTopLeftPoint() which returns the coordinates of the top-leftmost point of the aggregate screen space. This can be used as an offset for when the screen origin differs between the two sides of a Distant session. For example, Windows sets the origin as the top left of the primary monitor, while eLux sets the origin as the top left of the screen space.
+- getDPIScale() which returns the display's DPI scale. This can be used to transform a bounds object when the DPI scale differs between both sides of a Distant session.
 
 When a window tracker emits a boundsUpdate an object containing the bounds is emitted. In the case that a screen tracker emits a topLeftPointUpdate you may not have the window bounds stored. For this reason a window tracker contains a function to retrive this information
 
@@ -79,7 +79,7 @@ To monitor the position of the video elements, we will need to:
 - Create trackers for Electron window and elements that send updates for:
   - bounds
   - visibility
-- Create screen tracker for normalizing window bounds
+- Create a screen tracker for normalizing window bounds
 - Track the main window and the video elements
 
 ### Messages for Bounds and Visibility

@@ -32,4 +32,4 @@ Distant Driver for VDI is distributed as a Scout Enterprise EPM package for use 
 
 #### Windows / Mac
 
- On Windows and Mac we provide executables files, libraries and other resources files that needs to be packaged into your own installer.
+ On Windows and Mac we provide executables files, libraries and other resources that need to be packaged into your own installer.

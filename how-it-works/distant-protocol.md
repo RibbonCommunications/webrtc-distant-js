@@ -425,7 +425,7 @@ prev_state = {
 
 current_state = {
   id: 1,
-  entry_url: '',
+  targetUrl: '',
   status: CLOSED,
   error: 'Failed to properly cleanup session because of some reason'
 }

@@ -1,6 +1,6 @@
 # Distant Protocol
 
-In order to accommodate the different types of communications that Distant allows we define a flexible layered protocol. This protocol will be extensible in the future and allow enough flexibility for applications to overlay their own protocol on top of the base protocols.
+In order to accommodate the different types of communications that Distant allows we define a flexible layered protocol. This protocol will be extensible in the future and allow enough flexibility for applications to overlay their own protocol on top of the base protocol.
 
 ## Layer 0 - Packetization
 

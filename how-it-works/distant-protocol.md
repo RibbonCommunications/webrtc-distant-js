@@ -10,7 +10,7 @@ The packetization layer allows for packets of data to be split over the channel 
 
 This protocol definition makes assumptions about the underlying channel being used for communication.
 
-In this case the channel being used is a simple byte-channel provided by Citrix Virtual Channel that allows us to write and read data on the channel. This channel already provides the capability of packetization where individual packets are always guaranteed delivered whole and in the correct order.
+In this case the channel being used is a simple byte-channel provided by the Citrix Virtual Channel SDK that allows us to write and read data. This channel already provides the capability of packetization of individual packets up to a certain size. These packets are always guaranteed delivered whole and in the correct order.
 
 Guarantees of the channel (From the Citrix Virtual Channel SDK Programmer Guide):
 

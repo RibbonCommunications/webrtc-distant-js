@@ -471,7 +471,7 @@ current_state = {
 }
 ```
 
-> Note: An ERROR or CLOSED status always means that the session is ended and can no longer be reached. CLOSED is used when the session was closed as result of a normal user operation, ERROR is used in other cases.
+> Note: An ERROR or CLOSED status always means that the session is ended and can no longer be reached. CLOSED is used when the session was closed as result of a normal user operation, and ERROR is used in other cases.
 
 #### 5 - Sending custom messages
 

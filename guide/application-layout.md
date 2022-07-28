@@ -30,6 +30,6 @@ graph TB
 
 ```
 
-In the diagram above you can see the 2 different modes that a Distant application can use currently. Notice that the VDI side is much more involved due to the limitations of the Citrix Virtual Channel.
+In the diagram above you can see the 2 different modes that a Distant application can use. Notice that the VDI side is much more involved due to the limitations of the Citrix Virtual Channel.
 
 > Note: In the future we expect to create a package that encapsulates all the required packages on the VDI side into a simple connection package that allows applications to have less management code around all of these packages.

@@ -148,7 +148,7 @@ Now, we're almost there. Let's complete the picture.
 
 ## Receiving messages in the controller application
 
-In the controller application to receive a message from the session is quite simple and looks very similar to the remote side receiving a message.
+For the controller application to receive a message from the session is quite simple and looks very similar to how the remote side receives a message.
 
 ```javascript
 import { createDistantJSONCodec } from '@distant/distant-codecs'

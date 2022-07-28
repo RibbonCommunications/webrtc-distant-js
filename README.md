@@ -12,6 +12,6 @@ See the [Getting Started](./guide/getting-started.md) section of the guide.
 
 ## How it works
 
-At it's core, Distant is driven as a well defined protocol. This protocol uses Protocol Buffer (proto3) messages that are exchanged between the Distant Controller and the Distant Session in order to perform it's tasks.
+At its core, Distant is driven as a well defined protocol. This protocol uses Google Protocol Buffers (proto3) to build structured messages that are exchanged between the Distant Controller and the Distant Session in order to perform its tasks.
 
 You can learn more about the protocol [here](./how-it-works/distant-protocol.md).

@@ -2,7 +2,7 @@
 
 ## Description
 
-The distant toolkit is a set of JavaScript libraries and tools that allows a web or Electron application to control remote web applications. The application creates a Distant Controllers which is used to connect to a Distant Agent in order to create and manage Distant Sessions containing the remote web applications.
+The Distant Toolkit is a set of JavaScript libraries and tools that allows a web or Electron application to control remote web applications. The application creates a Distant Controller which is used to connect to a Distant Agent in order to create and manage Distant Sessions containing the remote web applications.
 
 The main use case for Distant is to separate in two an application running in a VDI environment: one part on the VDI host, and the other on the client device.
 

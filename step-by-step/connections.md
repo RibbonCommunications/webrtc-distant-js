@@ -93,7 +93,7 @@ remoteContoller.on('message', encoded => {
 })
 ```
 
-There we go, we received the message, decoded it, and then performed an operation.
+There we go! We received the message, decoded it, and then performed an operation.
 
 But what if the remote wants to communicate back to the application it's new state?
 

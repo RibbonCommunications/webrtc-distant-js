@@ -136,6 +136,6 @@ Finally we have arrived. We've now established a connection to the Distant VDI R
 
 Note that we could improve on the above design in a few ways:
 
-1. We could detect the mode and choose VDI always if we're able to create the channel.
+1. We could detect the mode and always choose VDI if we're able to create the channel.
 2. We could handle errors better. Errors will both be propagated through Distant as well as through the pull-vchannel's `done` callback handler.
 3. We could create some recovery mechanisms for re-establishing the connection if it drops.

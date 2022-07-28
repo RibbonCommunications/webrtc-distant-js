@@ -465,7 +465,7 @@ prev_state = {
 
 current_state = {
   id: 1,
-  entry_url: '',
+  targetUrl: '',
   status: ERROR,
   error: 'Session ended because of an unknown error'
 }

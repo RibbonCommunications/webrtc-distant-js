@@ -112,7 +112,7 @@ package distant;
  */
 message SessionStart {
   int32 id = 1;         // Id for a session
-  string entry_url = 2; // The entry point of a session, this points to a URL.
+  string target_url = 2; // The entry point of a session, this points to a URL.
 }
 
 /**

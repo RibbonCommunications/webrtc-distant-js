@@ -1,6 +1,6 @@
 # Sample Application Layout
 
-When building an application with distant, it is important to understand the connections that are needed.
+When building an application with Distant, it is important to understand the connections that are needed.
 
 #### Simple distant-web application
 

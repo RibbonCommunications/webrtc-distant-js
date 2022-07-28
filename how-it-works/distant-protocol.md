@@ -140,7 +140,7 @@ enum SessionStatus {
  */
 message SessionInfo {
   int32 id = 1;                     // Id of the session
-  string entry_url = 2;             // Entry point url of a session
+  string target_url = 2;             // Entry point url of a session
   distant.SessionStatus status = 3; // The current status of the session
   string error = 4;                 // If the status of the session is error, this contains information about the error.
   int32 target_status_code = 5;		  // Status code from load of remote application. Empty when no load.

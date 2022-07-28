@@ -18,7 +18,7 @@ So far we have not made clear the location of the code that is responsible for t
 
 ## Connecting everything
 
-Let's first re-state our distant initialization code that we had [previously defined](./starting-small).
+Let's first re-state our Distant initialization code that we had [previously defined](./starting-small).
 
 ```javascript
 import { createController } from '@distant/distant'

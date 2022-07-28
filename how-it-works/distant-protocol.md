@@ -396,7 +396,7 @@ current_state = {
 
 ##### 2.3 - Failing to stop a session
 
-When attempting to stop a session, but something goes wrong in the cleanup, the remote side should respond with some information about the failure. The session is still considered to be closed in such a scenario and messages can no longer be passed for this session.
+If something goes wrong while attempting to stop a session, the remote side should respond with some information about the failure. The session is still considered closed in such a scenario and messages can no longer be passed to this session.
 
 ```mermaid
 sequenceDiagram

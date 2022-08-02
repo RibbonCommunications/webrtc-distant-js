@@ -4,7 +4,7 @@ Kandy Distant JS change log.
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
 
-## 1.1.0 - 2002-07-28
+## 1.1.0 - 2022-07-28
 
 ### Added
 - `vchannel`

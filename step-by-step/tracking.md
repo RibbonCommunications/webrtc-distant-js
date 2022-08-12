@@ -1,10 +1,11 @@
 # Tracking
 
-Having successfully created a remote session in VDI mode in a Citrix environment, you may want to render your media elements inside your remote application. But you'll want to give the impression that the video elements are part of your controller application. To do so, we will monitor the bounds and visibility of the controller application's window and its video elements using the tracker package, and report these updates to the remote application so that it can position the video elements correctly.
+Having successfully created a remote session in VDI mode in a Citrix environment, you may now want to render media inside your remote application, and you'll want any visible media elements to appear as though they are part of your application (remembering that media (i.e. video) is actually rendered on the client, and not within your app or in the VDA).
+To accomplish this, we'll want to monitor the size, location and visibility of your application window and its video elements and report any changes to the remote application so that it can resize, move, and show, hide or clip accordingly.
 
 ## tracker
 
-The `@distant/tracker` package provides 3 tracking creator functions: `createElementTracker`, `createWindowTracker` and `createScreenTracker`. Element trackers and window trackers enable us to report bounds and visibility for Electron windows and for DOM elements. A screen tracker can be used to normalize window bounds. This is needed because the remote and controller operating systems may use a different point of origin for screen coordinates and may also use different DPI scaling.
+The `@distant/tracker` package provides 3 tracking creator functions: `createElementTracker`, `createWindowTracker` and `createScreenTracker`. Element trackers and window trackers enable us to report bounds and visibility for Electron windows and for DOM elements. A screen tracker can be used to normalize window bounds. This is needed because the remote and controller operating systems may use a different point as the origin for screen coordinates and also may be using different DPI scaling.
 
 ```javascript {highlight: [7, 8]}
 import { createElementTracker, createWindowTracker, createScreenTracker } from '@distant/tracker'
@@ -14,7 +15,7 @@ const window = remote.getCurrentWindow()
 const element = document.getElementById('target-element')
 
 const elementTracker = createElementTracker(element, 1000)
-const windowTracker = createWindowTracker(window, 1000)
+const windowTracker = createWindowTracker(window.id, 1000)
 const screenTracker = await createScreenTracker()
 ```
 
@@ -23,9 +24,9 @@ As shown above, createElementTracker and createWindowTracker accept 2 arguments:
 - a target
 - and an optional throttle wait time
 
-createScreenTracker does not need any arguments.
+createScreenTracker does not require any arguments.
 
-All functions return an object with the 4 methods, `on` and `off` to subscribe or unsubscribe from event types with a handler as well as `getBounds` and `getVisibility` to get the state of the tracked object. Window trackers and screen trackers have additional functions to aid with window bound normalization that will be discussed later.
+All functions return an object with `on` and `off` methods to subscribe or unsubscribe from event types with a handler. The object returned by `createElementTracker` and `createWindowTracker` contains `getBounds` and `getVisibility` methods to get the state of the tracked object. The object returned by `createScreenTracker`  contains a function that performs window bounds normalization that will be discussed later.
 
 ```javascript
 function createElementTracker(element, throttle) => ({
@@ -43,10 +44,9 @@ function createWindowTracker(window, throttle) => ({
 })
 
 function createScreenTracker() => ({
-  getTopLeftPoint: function () { ... },
-  getDPIScale: function () { ... },
   on: function (eventType, handler) { ... },
-  off: function (eventType, handler) { ... }
+  off: function (eventType, handler) { ... },
+  normalizeBounds: function (bounds) { ... }
 })
 ```
 
@@ -57,17 +57,10 @@ There are 2 event types used by both window tracker and element tracker objects:
 
 A screen tracker uses a different event type:
 
-- `topLeftPointUpdate` which emits an object: `{ x, y }` (location of the top left of the screen space relative to origin)
+- `displaysUpdated` which is emitted when the screen arrangement changes (i.e. new monitors are added or removed, Citrix moves into or out of fullscreen), or scaling or resolution change wihin the VDA
 
 ## Normalizing Window Bounds with Screen Tracker
-The screen tracker provides functions that can help create logic to normalize window bounds between different operating systems.
-
-- getTopLeftPoint() which returns the coordinates of the top-leftmost point of the aggregate screen space. This can be used as an offset for when the screen origin differs between the two sides of a Distant session. For example, Windows sets the origin as the top left of the primary monitor, while eLux sets the origin as the top left of the screen space.
-- getDPIScale() which returns the display's DPI scale. This can be used to transform a bounds object when the DPI scale differs between both sides of a Distant session.
-
-When a window tracker emits a boundsUpdate an object containing the bounds is emitted. In the case that a screen tracker emits a topLeftPointUpdate you may not have the window bounds stored. For this reason a window tracker contains a function to retrive this information
-
-- getBounds() which returns the current window bounds
+The screen tracker's `normalizeBounds` function normalizes window bounds between different operating systems, display arrangements and scaling values within the VDA. For example, Windows sets the bounds origin as the top left of the primary monitor within the VDA, while eLux sets the origin as the top left point of its aggregate screen space. As well, when Windows 10 is used as the VDA, each monitor may be assigned a different scaling value (100%, 125%, 150%, 175%) within the VDA, which the eLux client has no knowledge of. The screen tracker normalizes bounds to account for these differences and returns adjusted bounds to your application, which your app should then forward to the remote application.
 
 ## Tracking in the Controller Application
 
@@ -79,7 +72,7 @@ To monitor the position of the video elements, we will need to:
 - Create trackers for Electron window and elements that send updates for:
   - bounds
   - visibility
-- Create a screen tracker for normalizing window bounds
+- Create screen tracker for normalizing window bounds
 - Track the main window and the video elements
 
 ### Messages for Bounds and Visibility
@@ -132,38 +125,26 @@ export function createVisibilityElementMessage{id, visibility) {
 
 ### Tracking Functions
 
-In the controller application, let's create functions in a separate file to track bounds and visibility updates for a window and for elements in a win32 enviroment.
+In the controller application, let's create functions in a separate file to track bounds and visibility updates for a window and for elements in a Windows enviroment.
 
 ```javascript
 // ./utils/trackers.js
 import { createElementTracker, createWindowTracker, createScreenTracker } from '@distant/tracker'
 
 export async function startTrackingWindow(window, session, sendMessage, throttle) {
-  const windowTracker = createWindowTracker(window, throttle)
+  const windowTracker = createWindowTracker(window.id, throttle)
   const screenTracker = await createScreenTracker()
 
-  // This function returns the given bounds object normalized to 1 DPI and positioned relative to the top left point of the aggregate screen space.
-  // note: you may need to use different logic to normalize window bounds depending on the operating systems used in your setup
-  const normalizeWin32Bounds (bounds) => {
-    const topLeftPoint = screenTracker.getTopLeftPoint()
-    const DPIScale = screenTracker.getDPIScale()
-
-    return {
-      width: Math.round(bounds.width * DPIScale),
-      height: Math.round(bounds.height * DPIScale),
-      x: Math.round((bounds.x - topLeftPoint.x) * DPIScale),
-      y: Math.round((bounds.y - topLeftPoint.y) * DPIScale)
-    }
-  }
-
+  // This function returns the given bounds object normalized to 1 DPI and positioned relative to the top left point of the aggregate screen space
+  const normalizeWindowBounds = bounds => screenTracker.normalizeBounds(bounds)
 
   windowTracker.on('boundsUpdate', ({ bounds }) => {
-    const message = messages.createMoveWindowMessage(normalizeWin32Bounds(bounds))
+    const message = messages.createMoveWindowMessage(normalizeWindowBounds(bounds))
     sendMessage(session, message)
   })
 
-  screenTracker.on('topLeftPointUpdate', ({ point }) => {
-    const message = messages.createMoveWindowMessage(normalizeBounds(windowTracker.getBounds()))
+  screenTracker.on('displaysUpdated', () => {
+    const message = messages.createMoveWindowMessage(normalizeWindowBounds(windowTracker.getBounds()))
     sendMessage(session, message)
   })
 
@@ -222,7 +203,9 @@ import * as messageTypes from './applicationDefinedMessageTypes'
 import * as messages from './applicationDefinedMessageCreators'
 import remoteController from '@distant/distant-remote'
 import { createDistantJSONCodec } from '@distant/distant-codecs'
+
 const jsonCodec = createDistantJSONCodec()
+
 function sendMessage(controller, message) {
   const encoded = jsonCodec.encode(message)
   controller.sendMessage(encoded)
@@ -260,7 +243,9 @@ import * as messageTypes from './applicationDefinedMessageTypes'
 import * as messages from './applicationDefinedMessageCreators'
 import remoteController from '@distant/distant-remote'
 import { createDistantJSONCodec } from '@distant/distant-codecs'
+
 const jsonCodec = createDistantJSONCodec()
+
 function sendMessage(controller, message) {
   const encoded = jsonCodec.encode(message)
   controller.sendMessage(encoded)
@@ -298,7 +283,7 @@ remoteContoller.on('message', encoded => {
 })
 ```
 
-Last but not least, we'll tell the remote application what to do with the bounds and visibility updates for elements.
+Finally, we'll tell the remote application what to do with the bounds and visibility updates for elements.
 
 ```javascript
 const trackedElements = {}

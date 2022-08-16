@@ -1,6 +1,6 @@
 ## JavaScript Packages
 
-### [@distant/distant](./../packages/distant-readme.md)
+### [@distant/distant](../packages/distant-readme.md)
 
 This is the main Distant library that users interact with. It allows you to create a Distant Controller that you can connect to a Distant Remote Agent via a Distant channel and start creating and controlling Distant Sessions.
 

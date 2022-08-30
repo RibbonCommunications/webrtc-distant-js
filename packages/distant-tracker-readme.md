@@ -282,6 +282,9 @@ No further "normalization" is required in the controlling app.
 
 Fired when the server-side display settings change, for example when a new display is connected or the display layout or scaling changes. No data is provided to the event callback; the app should call `getBounds()`, `normalizeBounds()` etc. and invoke a remote window move to relocate the window to its correct new location (if required) in the new display arrangement.
 
+## Known Issues
+- Using version 2.0.0 in Electron 4 will thrown an error when `@distant/tracker/preload/main` is `require`d in Electron's main process. As a workaround, defer `require`ing this file until after `app.ready` has fired. (KAJ-1439)
+
 ## Limitations / Assumptions
 - This SDK is only intended for use in Electron's Renderer process
 - This SDK normalizes electron window movement (resizing, etc) in the server-side machine. It does not have access to resolution information on the host client. Therefore, for correct operation, all host client monitors should have the same resolution and scaling.

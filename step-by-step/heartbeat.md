@@ -32,7 +32,7 @@ session.on('heartbeatLost', event => {
 ```
 
 ### 3. Disabling
-You can disable Heartbeating by setting the `heartbeatInterval` property in the object passed to `createController` and setting its value to `0`.
+You can disable Heartbeating through the `heartbeatInterval` property of the object passed to `createController` by setting its value to `0`.
 
 ```javascript
 const session = await controller.createSession({

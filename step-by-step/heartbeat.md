@@ -11,7 +11,7 @@ Heartbeating is enabled by default, and is configured on a per-session basis by 
 
 ```javascript
 import { createController } from '@distant/distant'
-... // Other imports, based on your use case (Web or VDI)
+... // Other imports
 
 let controller
 ... // Create controller
@@ -43,7 +43,7 @@ const session = await controller.createSession({
 ```
 
 ### 4. Custom Values
-If you wish for Heartbeating to be enabled with your own custom values, you can pass values for `heartbeatInterval` and `maxTimeouts`, which default to `2000` and `3` respectively. Note that the `heartbeatInterval` value **must be set to at least** `200` in order for it to be active.
+If you wish for Heartbeating to be enabled with your own custom values, you can pass values for `heartbeatInterval` and `maxTimeouts`, which default to `2000` and `3` respectively. Note that interval units are expressed in milliseconds (ms) and the `heartbeatInterval` value **must be set to at least** `200` in order for it to be active.
 
 ```javascript
 const session = await controller.createSession({
@@ -64,7 +64,7 @@ const session = await controller.createSession({
   heartbeatInterval: 0
 })
 
-... // Session creation is successful
+... // Session creation is successful, but Heartbeating will not start
 
 session.startHeartbeat()
 ```

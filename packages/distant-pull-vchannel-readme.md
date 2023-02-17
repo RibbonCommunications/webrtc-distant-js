@@ -7,20 +7,20 @@ Create a pull-stream from a vchannel.
 Install using npm:
 
 ```
-npm install @distant/pull-vchannel
+npm install @distant/distant-pull-vchannel
 ```
 
 or yarn:
 
 ```
-yarn add @distant/pull-vchannel
+yarn add @distant/distant-pull-vchannel
 ```
 
 Use the package like so:
 
 ```javascript
 import { pull, drain, values } from 'pull-stream'
-import { createPullChannel } from '@distant/pull-vchannel'
+import { createPullChannel } from '@distant/distant-pull-vchannel'
 
 const channel = getChannel()
 

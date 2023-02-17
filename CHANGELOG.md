@@ -1,4 +1,4 @@
-Kandy Distant JS change log.
+Distant JS change log.
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.

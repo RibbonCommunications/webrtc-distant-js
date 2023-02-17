@@ -24,7 +24,7 @@ See the list of available modules [here](./modules.md)
 
 Distant Driver for VDI comes in the form of a dynamic library that gets loaded into the Citrix Receiver process at runtime. We support Windows, Mac and eLux.
 
-See the [Kandy Distant Driver for VDI](https://github.com/Kandy-IO/kandy-distant-vdi/) page for more information.
+See the [Distant Driver for VDI](https://github.com/RibbonCommunications/webrtc-distant-vdi) page for more information.
 
 #### eLux EPM package
 

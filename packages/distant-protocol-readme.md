@@ -9,19 +9,19 @@ This package holds the distant protobuf protocol definition. It's meant as a cen
 Install using npm:
 
 ```
-npm install @distant/distant-protocol
+npm install @rbbn/distant-protocol
 ```
 
 or yarn:
 
 ```
-yarn add @distant/distant-protocol
+yarn add @rbbn/distant-protocol
 ```
 
 Use the package like so:
 
 ```javascript
-import {distant as distantProtocol} from '@distant/distant-protocol
+import {distant as distantProtocol} from '@rbbn/distant-protocol
 
 function useProtocol() {
   // Use the protocol ...

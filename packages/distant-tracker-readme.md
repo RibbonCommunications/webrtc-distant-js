@@ -24,13 +24,13 @@ This SDK can be used in an Electron environment where security features such as 
 To install using npm:
 
 ```
-npm install @distant/tracker
+npm install @rbbn/distant-tracker
 ```
 
 To install using yarn:
 
 ```
-yarn add @distant/tracker
+yarn add @rbbn/distant-tracker
 ```
 ## Usage
 This SDK communicates between Main and Renderer Electron processes. The installation package includes everything required for independent operation, however your app must import / require certain files.
@@ -39,14 +39,14 @@ In the Electron main process, the preload/main file must be `require`'d, even if
 
 ```javascript
 // Main process
-require('@distant/tracker/preload/main);
+require('@rbbn/distant-tracker/preload/main);
 ```
 
 In the Electron renderer process, the preload/renderer file must be required in your preload script if contextIsolation is being used. Otherwise this `require` is not necessary.
 
 ```javascript
 // Renderer process, preload.js
-require('@distant/tracker/preload/renderer);
+require('@rbbn/distant-tracker/preload/renderer);
 ```
 
 ## Window Tracker
@@ -55,7 +55,7 @@ A window tracker is created by calling `createWindowTracker()` with the ID of an
 The throttle is an option to control the frequency at which the window tracker emits bounds or visibility updates.
 
 ```javascript
-import { createWindowTracker } from `@distant/tracker`;
+import { createWindowTracker } from `@rbbn/distant-tracker`;
 
 const electronWindow = new BrowserWindow();
 
@@ -152,7 +152,7 @@ Note that this does not take into account other applications that may be on top 
 A element tracker is created by calling `createElementTracker()` with a DOM element and an optional throttle time in milliseconds. Note that the throttle has a minimum value of 20 milliseconds.
 
 ```javascript
-import { createElementTracker } from `@distant/tracker`;
+import { createElementTracker } from `@rbbn/distant-tracker`;
 
 const element = document.getElementById('tracked-element');
 
@@ -249,7 +249,7 @@ A screen tracker is created by calling `createScreenTracker()` which returns a P
 The `createScreenTracker` function takes an optional object with a single key `rendererLogs`, which can be set to `true` to enable screen tracker debug logs in the Renderer process. Default is `false`.
 
 ```
-import { createScreenTracker } from `@distant/tracker`;
+import { createScreenTracker } from `@rbbn/distant-tracker`;
 
 const screenTracker = await createScreenTracker();
 
@@ -283,7 +283,7 @@ No further "normalization" is required in the controlling app.
 Fired when the server-side display settings change, for example when a new display is connected or the display layout or scaling changes. No data is provided to the event callback; the app should call `getBounds()`, `normalizeBounds()` etc. and invoke a remote window move to relocate the window to its correct new location (if required) in the new display arrangement.
 
 ## Known Issues
-- Using version 2.0.0 in Electron 4 will thrown an error when `@distant/tracker/preload/main` is `require`d in Electron's main process. As a workaround, defer `require`ing this file until after `app.ready` has fired. (KAJ-1439)
+- Using version 2.0.0 in Electron 4 will thrown an error when `@rbbn/distant-tracker/preload/main` is `require`d in Electron's main process. As a workaround, defer `require`ing this file until after `app.ready` has fired. (KAJ-1439)
 
 ## Limitations / Assumptions
 - This SDK is only intended for use in Electron's Renderer process

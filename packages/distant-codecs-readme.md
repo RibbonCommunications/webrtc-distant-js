@@ -9,19 +9,19 @@ Holds various codecs that can be used with Distant.
 Install using npm:
 
 ```
-npm install @distant/distant-codecs
+npm install @rbbn/distant-codecs
 ```
 
 or yarn:
 
 ```
-yarn add @distant/distant-codecs
+yarn add @rbbn/distant-codecs
 ```
 
 Use the package like so:
 
 ```javascript
-import { createDistantProtobufCodec } from '@distant/distant-codecs'
+import { createDistantProtobufCodec } from '@rbbn/distant-codecs'
 
 const codec = createDistantProtobufCodec()
 

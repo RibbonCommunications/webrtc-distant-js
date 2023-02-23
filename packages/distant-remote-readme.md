@@ -9,22 +9,22 @@ Library for remote applications to interact with Distant
 Install using npm:
 
 ```
-npm install @distant/distant-remote
+npm install @rbbn/distant-remote
 ```
 
 or yarn:
 
 ```
-yarn add @distant/distant-remote
+yarn add @rbbn/distant-remote
 ```
 
 Use the package like so:
 
 ```javascript
-import distantRemote from '@distant/distant-remote'
+import distantRemote from '@rbbn/distant-remote'
 
 //// OR
-// import { createRemoteController } from '@distant/distant-remote'
+// import { createRemoteController } from '@rbbn/distant-remote'
 // const distantRemote = createRemoteController(window.distant, window.cefQuery)
 
 const textEncoder = new TextEncoder()

@@ -13,13 +13,13 @@ The Distant library is used to control a remote browser-type application via an 
 Install using npm:
 
 ```
-npm install @distant/distant
+npm install @rbbn/distant
 ```
 
 or yarn:
 
 ```
-yarn add @distant/distant
+yarn add @rbbn/distant
 ```
 
 # Basic Usage
@@ -27,8 +27,8 @@ yarn add @distant/distant
 To get started, you need to create a controller that is connected to a remote agent.
 
 ```javascript
-import { createController } from '@distant/distant'
-import { createConnection } from '@distant/distant-web'
+import { createController } from '@rbbn/distant'
+import { createConnection } from '@rbbn/distant-web'
 
 const distantWebConnection = createConnection()
 

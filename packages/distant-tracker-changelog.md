@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Screen Tracker
 - The `createScreenTracker()` API now accepts an optional object with a single `rendererLogs` parameter to enable debug logs.
 - The `topLeftPointUpdate` event is renamed `displaysUpdated`.
-- The `getTopLeftPoint` method is replaced by `normalizeBounds`. This method now performs **all** normalization required to interwork with the Kandy Distant VDI platform, meaning the application need not perform any additional normalization.
+- The `getTopLeftPoint` method is replaced by `normalizeBounds`. This method now performs **all** normalization required to interwork with the Distant VDI platform, meaning the application need not perform any additional normalization.
 
 See README for details on usage on all of the above.
 

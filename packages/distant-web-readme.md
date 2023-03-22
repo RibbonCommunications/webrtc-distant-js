@@ -11,13 +11,13 @@ implementation based on the browser native `window.open()` method.
 Install using npm:
 
 ```
-npm install @distant/distant-web
+npm install @rbbn/distant-web
 ```
 
 or yarn:
 
 ```
-yarn add @distant/distant-web
+yarn add @rbbn/distant-web
 ```
 
 
@@ -29,9 +29,9 @@ connection rather than a pull-vchannel connection to distant's
 browser due to the fact that Distant Web uses `window.open()`.
 
 ```javascript
-import { createController } from '@distant/distant'
+import { createController } from '@rbbn/distant'
 
-import { createConnection } from '@distant/distant-web'
+import { createConnection } from '@rbbn/distant-web'
 
 const textEncoder = new TextEncoder()
 
@@ -56,7 +56,7 @@ differently. The remote app will be opened in a new browser window and
 distant-web will provided all that is needed for distant-remote to work.
 
 ```javascript
-import distantRemote from '@distant/distant-remote'
+import distantRemote from '@rbbn/distant-remote'
 
 const textDecoder = new TextDecoder()
 
@@ -79,7 +79,7 @@ import {
   createConnection,
   createWebWindow,
   createElectronWindow
-} from '@distant/distant-web'
+} from '@rbbn/distant-web'
 
 // if we're running in a browser (this is the default if none specified)
 const distantWebConnection = createConnection({

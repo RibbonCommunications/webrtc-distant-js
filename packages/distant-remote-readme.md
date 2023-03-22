@@ -44,6 +44,7 @@ distantRemote.moveWindow(44, 55, 666, 777)
 
 distantRemote.setWindowVisible(true)
 
+distantRemote.openBrowser('https://google.com')
 
 distantRemote.close()
 ```

@@ -7,6 +7,7 @@ Distant JS change log.
 ### Added
 - `distant-remote`
   - MacOS: "requestDeviceAuth" method added to remote controller object will check microphone and camera permissions and request them from the user if they've never been prompted or if they were previously denied. The results will be emitted as a "deviceAuth" event which can be listened to using the remote controller's "on" method. `KAJ-1638`
+  - "openBrowser" method added to the remote controller object takes an argument of a URL as a string, launches the user's system web browser and opens that URL. `KAJ-1644`
 
 ## 1.1.0 - 2022-07-28
 ### Added

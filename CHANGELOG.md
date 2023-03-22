@@ -3,9 +3,12 @@ Distant JS change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 1.2.0 - TBD
+### Added
+- `distant-remote`
+  - MacOS: "requestDeviceAuth" method added to remote controller object will check microphone and camera permissions and request them from the user if they've never been prompted or if they were previously denied. The results will be emitted as a "deviceAuth" event which can be listened to using the remote controller's "on" method. `KAJ-1638`
 
 ## 1.1.0 - 2022-07-28
-
 ### Added
 - `vchannel`
   - getInfo's returned object now contains additional variables to identify os. `KAJ-642`

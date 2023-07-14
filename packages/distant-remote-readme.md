@@ -32,11 +32,19 @@ const textDecoder = new TextDecoder()
 
 distantRemote.on('message', (message) => console.log(textDecoder.decode(message)))
 
+distantRemote.on('deviceAuth', (auth) => {
+  const { cameraAccess, microphoneAccess } = auth
+})
+
+distantRemote.requestDeviceAuth() // result will be emitted as `deviceAuth` event
+
 distantRemote.sendMessage(textEncoder.encode("hello"))
 
 distantRemote.moveWindow(44, 55, 666, 777)
 
-distantRemote.setWindowVisibile(true)
+distantRemote.setWindowVisible(true)
+
+distantRemote.openBrowser('https://google.com')
 
 distantRemote.close()
 ```

@@ -40,7 +40,7 @@ distantRemote.sendMessage(textEncoder.encode("hello"))
 
 ### Window controlling
 ```javascript
-distantRemote.moveWindow(44, 55, 666, 777)
+distantRemote.moveWindow({ x: 44, y: 55, width: 666, height: 777 })
 
 distantRemote.setWindowVisible(true)
 ```
@@ -55,7 +55,7 @@ distantRemote.requestDeviceAuth() // result will be emitted as `deviceAuth` even
 ```
 
 ### Opening web pages
-distant-remote is capable of opening webpages directly on the system where it runs. This can be achieved by doing the following:
+distant-remote is capable of opening webpages directly on the system where it runs. Pages will be opened using the client's **default browser**. This can be achieved by doing the following:
 
 ```javascript
 distantRemote.openBrowser('https://google.com')

@@ -1,10 +1,8 @@
-## Distant Remote
+# Distant Remote
 
 Library for remote applications to interact with Distant
 
-## Usage
-
-### JavaScript
+## Installation
 
 Install using npm:
 
@@ -18,8 +16,10 @@ or yarn:
 yarn add @rbbn/distant-remote
 ```
 
+## Usage
 Use the package like so:
 
+### Creating the remote instance
 ```javascript
 import distantRemote from '@rbbn/distant-remote'
 
@@ -31,20 +31,40 @@ const textEncoder = new TextEncoder()
 const textDecoder = new TextDecoder()
 
 distantRemote.on('message', (message) => console.log(textDecoder.decode(message)))
+```
 
+### Sending messages
+```javascript
+distantRemote.sendMessage(textEncoder.encode("hello"))
+```
+
+### Window controlling
+```javascript
+distantRemote.moveWindow({ x: 44, y: 55, width: 666, height: 777 })
+
+distantRemote.setWindowVisible(true)
+```
+
+### Device authorization
+```javascript
 distantRemote.on('deviceAuth', (auth) => {
   const { cameraAccess, microphoneAccess } = auth
 })
 
 distantRemote.requestDeviceAuth() // result will be emitted as `deviceAuth` event
+```
 
-distantRemote.sendMessage(textEncoder.encode("hello"))
+### Opening web pages
+distant-remote is capable of opening webpages directly on the system where it runs. Pages will be opened using the client's **default browser**. This can be achieved by doing the following:
 
-distantRemote.moveWindow(44, 55, 666, 777)
-
-distantRemote.setWindowVisible(true)
-
+```javascript
 distantRemote.openBrowser('https://google.com')
+```
 
-distantRemote.close()
+
+### Closing the session
+The session can be controlled from the remote instance.
+
+```javascript
+distantRemote.close() // Calling this method will close the Distant session
 ```

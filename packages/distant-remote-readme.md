@@ -39,6 +39,13 @@ distantRemote.sendMessage(textEncoder.encode("hello"))
 ```
 
 ### Window controlling
+distant-remote API includes methods for controlling the Distant Window.
+
+`moveWindow()` takes a **bounds** object with four **number** parameters representing values in pixels:
+- *x*, *y*, *width* and *height*.
+
+`setWindowVisible()` takes a boolean value.
+
 ```javascript
 distantRemote.moveWindow({ x: 44, y: 55, width: 666, height: 777 })
 

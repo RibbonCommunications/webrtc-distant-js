@@ -9,6 +9,11 @@ Distant JS change log.
   - MacOS: "requestDeviceAuth" method added to remote controller object will check microphone and camera permissions and request them from the user if they've never been prompted or if they were previously denied. The results will be emitted as a "deviceAuth" event which can be listened to using the remote controller's "on" method. `KAJ-1638`
   - "openBrowser" method added to the remote controller object takes an argument of a URL as a string, launches the user's system web browser and opens that URL. `KAJ-1644`
 
+## 1.1.1 - 2022-07-21
+### Fixed
+- `vchannel`
+  - Install script no longer throws uncaught exception if command line arguments aren't available as the "npm_config_argv" environment variable. This environment variable was removed in NPM 7, which was released with Node 15.`KAJ-1491`
+
 ## 1.1.0 - 2022-07-28
 ### Added
 - `vchannel`

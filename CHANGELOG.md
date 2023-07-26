@@ -12,7 +12,7 @@ Distant JS change log.
 ## 1.1.1 - 2022-07-21
 ### Fixed
 - `vchannel`
-  - Install script no longer throws uncaught exception if command line arguments aren't available as the "npm_config_argv" environment variable. This environment variable was removed in NPM 7, which was released with Node 15.`KAJ-1491`
+  - Install script no longer throws uncaught exception if command line arguments aren't available as the "npm_config_argv" environment variable. This environment variable was removed in NPM 7, which was released with Node 15. `KAJ-1491`
 
 ## 1.1.0 - 2022-07-28
 ### Added

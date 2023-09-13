@@ -34,7 +34,7 @@ Then it's simple to create a shared a library that can be used both in the appli
 Let's send a message from the Distant Controller to a previously created session.
 
 ```javascript {highlight:[1, 3, 9, 11]}
-import { createDistantJSONCodec } from '@distant/distant-codecs'
+import { createDistantJSONCodec } from '@rbbn/distant-codecs'
 
 const jsonCodec = createDistantJSONCodec()
 
@@ -50,7 +50,7 @@ function sendMessage(distantSession, message) {
 
 In order to send a message to the remote side, it must be encoded into a UInt8Array (an array of bytes). This is due to the nature of the possible channels that Distant operates on, such as Citrix Virtual Channels.
 
-The `@distant/distant-codecs` package has some tools that can help with this. Namely an encoder that generates a JSON payload and then encodes it into an array of bytes.
+The `@rbbn/distant-codecs` package has some tools that can help with this. Namely an encoder that generates a JSON payload and then encodes it into an array of bytes.
 
 Effectively, the `jsonCodec.encode` line is equivalent to the following encode function:
 
@@ -69,8 +69,8 @@ From the remote application, receiving the message is quite simple.
 
 ```javascript
 import * as messageTypes from './applicationDefinedMessageTypes'
-import remoteController from '@distant/distant-remote'
-import { createDistantJSONCodec } from '@distant/distant-codecs'
+import remoteController from '@rbbn/distant-remote'
+import { createDistantJSONCodec } from '@rbbn/distant-codecs'
 
 const jsonCodec = createDistantJSONCodec()
 
@@ -106,8 +106,8 @@ Let's revise our last example to see how the remote application could do this.
 ```javascript {highlight: [2,'8-11','25-27']}
 import * as messageTypes from './applicationDefinedMessageTypes'
 import * as messages from './applicationDefinedMessageCreators'
-import remoteController from '@distant/distant-remote'
-import { createDistantJSONCodec } from '@distant/distant-codecs'
+import remoteController from '@rbbn/distant-remote'
+import { createDistantJSONCodec } from '@rbbn/distant-codecs'
 
 const jsonCodec = createDistantJSONCodec()
 
@@ -151,7 +151,7 @@ Now, we're almost there. Let's complete the picture.
 For the controller application to receive a message from the session is quite simple and looks very similar to how the remote side receives a message.
 
 ```javascript
-import { createDistantJSONCodec } from '@distant/distant-codecs'
+import { createDistantJSONCodec } from '@rbbn/distant-codecs'
 import * as messageTypes from './applicationDefinedMessageTypes'
 
 const jsonCodec = createDistantJSONCodec()

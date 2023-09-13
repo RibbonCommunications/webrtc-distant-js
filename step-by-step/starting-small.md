@@ -7,8 +7,8 @@ To start with, we will highlight the steps to create an application that is not 
 Let's begin by initializing Distant, Distant Web and creating a controller.
 
 ```javascript {highlight:['1-2',7,12]}
-import { createController } from '@distant/distant'
-import { createConnection } from '@distant/distant-web'
+import { createController } from '@rbbn/distant'
+import { createConnection } from '@rbbn/distant-web'
 
 let distantController
 
@@ -31,8 +31,8 @@ Here we create 2 things. First we create a connection to Distant Web. Since Dist
   If you are creating a Distant Web connection in the *main* process of an Electron application you will need to use the electron window factory provided by Distant Web.
 
   ```javascript {highlight:[2,8]}
-  import { createController } from '@distant/distant'
-  import { createConnection, createElectronWindow } from '@distant/distant-web'
+  import { createController } from '@rbbn/distant'
+  import { createConnection, createElectronWindow } from '@rbbn/distant-web'
 
   let distantController
 

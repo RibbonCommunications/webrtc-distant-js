@@ -84,7 +84,7 @@ The distant protocol uses Google's Protocol Buffers to define messages that are 
 
 ### Protocol Buffer Definition
 
-The section below is a copy of the distant.proto file in the `@distant/distant-protocol` package. In case of differences, the one in the package is the official one.
+The section below is a copy of the distant.proto file in the `@rbbn/distant-protocol` package. In case of differences, the one in the package is the official one.
 
 ```protobuf
 syntax = "proto3";

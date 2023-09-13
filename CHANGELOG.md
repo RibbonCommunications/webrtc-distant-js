@@ -11,7 +11,8 @@
 
 ### Changed
 - First release of DistantJS published in NPM
-- `vchannel`
+- Branding change from @distant to @rbbn
+- `distant-vchannel`
   - Bump protobufjs to 7.2.5
 
 ## 1.1.1 - 2022-07-21

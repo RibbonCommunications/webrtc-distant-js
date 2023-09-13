@@ -9,13 +9,13 @@ All of the JavaScript libraries are provided as Node modules that can also run i
 Using npm:
 
 ```shell
-$ npm install @distant/distant
+$ npm install @rbbn/distant
 ```
 
 Using yarn:
 
 ```shell
-$ yarn add @distant/distant
+$ yarn add @rbbn/distant
 ```
 
 See the list of available modules [here](./modules.md)

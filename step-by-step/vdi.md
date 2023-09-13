@@ -4,7 +4,7 @@ So far we have been using Distant Web only as a distant agent. Let's see what it
 
 ## vchannel
 
-The `@distant/vchannel` package is used to communicate over the Citrix Virtual Channel to the distant-vdi remote agent.
+The `@rbbn/distant-vchannel` package is used to communicate over the Citrix Virtual Channel to the distant-vdi remote agent.
 
 This package contains native bindings to a C++ library called the Citrix WinFrame Library in order to connect to the channel. This library currently only runs in Windows; therefore, this mode is for Windows exclusively.
 
@@ -21,8 +21,8 @@ So far we have not made clear the location of the code that is responsible for t
 Let's first re-state our Distant initialization code that we had [previously defined](./starting-small).
 
 ```javascript
-import { createController } from '@distant/distant'
-import { createWebConnection } from '@distant/distant-web'
+import { createController } from '@rbbn/distant'
+import { createWebConnection } from '@rbbn/distant-web'
 
 let distantController
 
@@ -39,11 +39,11 @@ function initializeDistant() {
 Now let's add a VDI mode by adding the necessary packages first.
 
 ```javascript {highlight: ['3-5']}
-import { createController } from '@distant/distant'
-import { createWebConnection } from '@distant/distant-web'
-import { openVirtualChannel } from '@distant/vchannel'
-import { createPullChannel } from '@distant/pull-vchannel'
-import { createPacketizationCodec } from '@distant/distant-codecs'
+import { createController } from '@rbbn/distant'
+import { createWebConnection } from '@rbbn/distant-web'
+import { openVirtualChannel } from '@rbbn/distant-vchannel'
+import { createPullChannel } from '@rbbn/distant-pull-vchannel'
+import { createPacketizationCodec } from '@rbbn/distant-codecs'
 ```
 
 We need 3 new packages. Once you've done these next steps, you won't need to repeat them.

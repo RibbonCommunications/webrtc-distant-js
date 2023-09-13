@@ -1,6 +1,6 @@
-## Using the Kandy.js WebRTC SDK
+## Using the WebRTC.js SDK
 
-The Kandy.js SDK supports a proxy mode in which the media engine of the SDK can be separated from the signaling engine. This is a great fit for Distant applications running in VDI where we want the media to run on the user device, but the signaling to take place on the host device.
+The WebRTC.js SDK supports a proxy mode in which the media engine of the SDK can be separated from the signaling engine. This is a great fit for Distant applications running in VDI where we want the media to run on the user device, but the signaling to take place on the host device.
 
 This "proxy mode" requires a special setup for the SDK which is not normally needed for a regular WebRTC scenario (with local media & signaling).
 
@@ -66,7 +66,7 @@ const sdkChannel = {
   receive: undefined
 }
 ```
-This will allow the Kandy SDK to send messages that the remote application will receive.
+This will allow the WebRTC SDK to send messages that the remote application will receive.
 
 It is up to the application to determine how it wants to define an "SDK message" to be sent. This will also define how the remote application will need to interpret an SDK message.
 
@@ -116,13 +116,13 @@ distantSession.on('message', encoded => {
   }
 })
 ```
-This completes the SDK Channel, allowing the two Kandy SDKs to communicate with each other. In this way, the application can optionally access the messages that the SDKs are sending, but does not need to know anything about the messages.
+This completes the SDK Channel, allowing the two WebRTC SDKs to communicate with each other. In this way, the application can optionally access the messages that the SDKs are sending, but does not need to know anything about the messages.
 
 It is important to note that the `channel.receive` function will not be defined until the application provides the SDK Channel to the SDK. This will be explained in the next section.
 
 ## Preparing the SDK
 
-For the Kandy SDK to know whether WebRTC operations will be performed locally or remotely, the application needs to prepare the SDK.
+For the WebRTC SDK to know whether WebRTC operations will be performed locally or remotely, the application needs to prepare the SDK.
 
 By default, the SDK performs operations locally. To perform them remotely, the application needs to:
 
@@ -133,7 +133,7 @@ By default, the SDK performs operations locally. To perform them remotely, the a
 
 ### Create the SDK with allowProxy option
 ``` javascript
- const kandy = Kandy.create({
+ const webrtc = WebRTC.create({
    common: {
      allowProxy: true
    }
@@ -144,19 +144,19 @@ By default, the SDK performs operations locally. To perform them remotely, the a
 After the application has created the SDK channel as described above, it can provide that channel to the SDK by using the `proxy.setChannel` API.
 
 ``` javascript {highlight: [5]}
-// The Kandy Channel.
+// The WebRTC Channel.
 const sdkChannel = { ... }
 
 // Provide the channel to the SDK.
-kandy.proxy.setChannel(sdkChannel)
+webrtc.proxy.setChannel(sdkChannel)
 ```
 
 This will trigger an event, so the application knows the channel has been set.
 
 ``` javascript
 // Listen for changes to proxy state.
-kandy.on('proxy:change', () => {
-  const proxyInfo = kandy.proxy.getInfo()
+webrtc.on('proxy:change', () => {
+  const proxyInfo = webrtc.proxy.getInfo()
 
   if (proxyInfo.hasChannel) {
     console.log('SDK has a valid channel for proxy mode.')
@@ -168,14 +168,14 @@ Alternatively, a `proxy:error` event will be emitted if the operation failed.
 
 ### Enable Proxy Mode
 
-Enabling proxy mode is done using the `kandy.proxy.setProxyMode` API. This will also trigger an event.
+Enabling proxy mode is done using the `webrtc.proxy.setProxyMode` API. This will also trigger an event.
 
 ``` javascript {highlight: [2]}
 // Enable proxy mode.
-kandy.proxy.setProxyMode(true)
+webrtc.proxy.setProxyMode(true)
 
-kandy.on('proxy:change', () => {
-  const proxyInfo = kandy.proxy.getInfo()
+webrtc.on('proxy:change', () => {
+  const proxyInfo = webrtc.proxy.getInfo()
 
   console.log(`SDK Proxy Mode set to: ${proxyInfo.proxyMode}.`)
 })
@@ -185,19 +185,19 @@ kandy.on('proxy:change', () => {
 
 The last step is initializing the Remote SDK to ensure it is prepared for WebRTC operations. This will send a message across the SDK channel and wait for a response, verifying that the two SDKs can communicate with each other.
 
-This is done with the `kandy.proxy.initializeRemote` API. This can only be done when the SDK has a channel and is in proxy mode.
+This is done with the `webrtc.proxy.initializeRemote` API. This can only be done when the SDK has a channel and is in proxy mode.
 
 ``` javascript {highlight: [4]}
-const proxyInfo = kandy.proxy.getInfo()
+const proxyInfo = webrtc.proxy.getInfo()
 if (proxyInfo.hasChannel && proxyInfo.proxyMode) {
   // Attempt to initialize the remote SDK.
-  kandy.proxy.initializeRemote()
+  webrtc.proxy.initializeRemote()
 } else {
   console.log('Cannot initialize remote SDK: Requirements not met.')
 }
 
-kandy.on('proxy:change', () => {
-  const proxyInfo = kandy.proxy.getInfo()
+webrtc.on('proxy:change', () => {
+  const proxyInfo = webrtc.proxy.getInfo()
 
   if (proxyInfo.remoteInitialized) {
     console.log('The SDK is ready for remote WebRTC operations.')
@@ -207,39 +207,39 @@ kandy.on('proxy:change', () => {
 
 ## Preparing the Remote SDK
 
-The Remote Kandy SDK also needs to be prepared before it can be used. It requires a channel in the same way that the Kandy SDK needs one, but is always in proxy mode.
+The Remote WebRTC SDK also needs to be prepared before it can be used. It requires a channel in the same way that the WebRTC SDK needs one, but is always in proxy mode.
 
 ### Create the SDK
  ``` javascript
- const client = Kandy.create()
+ const client = WebRTC.create()
  ```
 
 ### Set the Channel
 
-The channel is set the same way in both Kandy SDKs:
+The channel is set the same way in both WebRTC SDKs:
 
 ``` javascript {highlight: [5]}
 // The SDK Channel.
 const sdkChannel = { ... }
 
 // Provide the channel to the Remote SDK.
-remoteKandy.proxy.setChannel(sdkChannel)
+remoteWebRTC.proxy.setChannel(sdkChannel)
 ```
 
 ### Wait for Initialization
 
-The Remote Kandy SDK will also emit an event when it has been initialized by the Kandy SDK. This lets the remote application know that it may begin to receive SDK messages.
+The Remote WebRTC SDK will also emit an event when it has been initialized by the WebRTC SDK. This lets the remote application know that it may begin to receive SDK messages.
 
 ``` javascript
-remoteKandy.on('initialize', () => {
-  console.log('Received initialization message from the Kandy SDK.')
+remoteWebRTC.on('initialize', () => {
+  console.log('Received initialization message from the WebRTC SDK.')
 })
 ```
 
 ## WebRTC Operations in Proxy Mode
 
-After the Kandy SDK has been prepared for proxy mode, all WebRTC related operations will be sent over the channel instead of being performed locally. This will be done by the SDK automatically, without changes needing to be made to the application.
+After the WebRTC SDK has been prepared for proxy mode, all WebRTC related operations will be sent over the channel instead of being performed locally. This will be done by the SDK automatically, without changes needing to be made to the application.
 
 The only caveat is about rendering media. When in proxy mode, the SDK will know about the media being used by the Remote SDK. This can cause odd scenarios if the application tries to use the media locally, but it doesn't exist. It shouldn't create issues, but you may see error messages in the logs depending on how the application handles these scenarios.
 
-Have the application use the Kandy.js SDK "render" APIs as you would normally use them, but use the html selector for an element that is located in the remote application.
+Have the application use the WebRTC.js SDK "render" APIs as you would normally use them, but use the html selector for an element that is located in the remote application.

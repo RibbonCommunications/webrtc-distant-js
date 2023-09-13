@@ -1,13 +1,18 @@
-Distant JS change log.
+# Changelog
 
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
-## 1.2.0 - TBD
+## 1.2.0 - 2023-09-13
 ### Added
 - `distant-remote`
   - MacOS: "requestDeviceAuth" method added to remote controller object will check microphone and camera permissions and request them from the user if they've never been prompted or if they were previously denied. The results will be emitted as a "deviceAuth" event which can be listened to using the remote controller's "on" method. `KAJ-1638`
   - "openBrowser" method added to the remote controller object takes an argument of a URL as a string, launches the user's system web browser and opens that URL. `KAJ-1644`
+
+### Changed
+- First release of DistantJS published in NPM
+- `vchannel`
+  - Bump protobufjs to 7.2.5
 
 ## 1.1.1 - 2022-07-21
 ### Fixed

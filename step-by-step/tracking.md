@@ -175,7 +175,7 @@ Now that we have functions to create our trackers, we will track the main window
 
 ```javascript {highlight:[3, '6-16']}
 function startCall(number) {
-  Kandy.call.make(number)
+  WebRTC.call.make(number)
   startTracking()
 }
 

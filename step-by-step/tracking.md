@@ -5,10 +5,10 @@ To accomplish this, we'll want to monitor the size, location and visibility of y
 
 ## tracker
 
-The `@distant/tracker` package provides 3 tracking creator functions: `createElementTracker`, `createWindowTracker` and `createScreenTracker`. Element trackers and window trackers enable us to report bounds and visibility for Electron windows and for DOM elements. A screen tracker can be used to normalize window bounds. This is needed because the remote and controller operating systems may use a different point as the origin for screen coordinates and also may be using different DPI scaling.
+The `@rbbn/distant-tracker` package provides 3 tracking creator functions: `createElementTracker`, `createWindowTracker` and `createScreenTracker`. Element trackers and window trackers enable us to report bounds and visibility for Electron windows and for DOM elements. A screen tracker can be used to normalize window bounds. This is needed because the remote and controller operating systems may use a different point as the origin for screen coordinates and also may be using different DPI scaling.
 
 ```javascript {highlight: [7, 8]}
-import { createElementTracker, createWindowTracker, createScreenTracker } from '@distant/tracker'
+import { createElementTracker, createWindowTracker, createScreenTracker } from '@rbbn/distant-tracker'
 
 const { remote } = require('electron')
 const window = remote.getCurrentWindow()
@@ -129,7 +129,7 @@ In the controller application, let's create functions in a separate file to trac
 
 ```javascript
 // ./utils/trackers.js
-import { createElementTracker, createWindowTracker, createScreenTracker } from '@distant/tracker'
+import { createElementTracker, createWindowTracker, createScreenTracker } from '@rbbn/distant-tracker'
 
 export async function startTrackingWindow(window, session, sendMessage, throttle) {
   const windowTracker = createWindowTracker(window.id, throttle)
@@ -201,8 +201,8 @@ First, we'll handle the new visibility updates from the window.
 ```javascript {highlight: ['24-28']}
 import * as messageTypes from './applicationDefinedMessageTypes'
 import * as messages from './applicationDefinedMessageCreators'
-import remoteController from '@distant/distant-remote'
-import { createDistantJSONCodec } from '@distant/distant-codecs'
+import remoteController from '@rbbn/distant-remote'
+import { createDistantJSONCodec } from '@rbbn/distant-codecs'
 
 const jsonCodec = createDistantJSONCodec()
 
@@ -241,8 +241,8 @@ Now, we'll add cases for our element updates for bounds and visibility with hand
 ```javascript {highlight: ['29-35']}
 import * as messageTypes from './applicationDefinedMessageTypes'
 import * as messages from './applicationDefinedMessageCreators'
-import remoteController from '@distant/distant-remote'
-import { createDistantJSONCodec } from '@distant/distant-codecs'
+import remoteController from '@rbbn/distant-remote'
+import { createDistantJSONCodec } from '@rbbn/distant-codecs'
 
 const jsonCodec = createDistantJSONCodec()
 

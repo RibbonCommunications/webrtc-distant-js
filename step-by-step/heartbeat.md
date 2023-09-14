@@ -10,7 +10,7 @@ The Distant Toolkit provides complete, bi-directional, end-to-end heartbeating b
 Heartbeating is enabled by default, and is configured on a per-session basis by calling `createSession` on your controller object. The heartbeat begins as soon as your session status is in a `READY` state.
 
 ```javascript
-import { createController } from '@distant/distant'
+import { createController } from '@rbbn/distant'
 ... // Other imports
 
 let controller

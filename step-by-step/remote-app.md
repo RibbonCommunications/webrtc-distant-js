@@ -34,7 +34,7 @@ A simple HTML file that simply has a `div` element that will be used host a vide
 ## index.js
 
 ```javascript {highlight:[1,8,11]}
-import remoteController from '@distant/distant-remote'
+import remoteController from '@rbbn/distant-remote'
 
 // If this application is not running in a Distant Session, the remoteController will be undefined.
 if (remoteController) {

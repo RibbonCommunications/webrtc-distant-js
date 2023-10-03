@@ -5,10 +5,8 @@
 
 ## 1.2.1 - 2023-10-03
 ### Fixed
-- `distant-web`
-  - Fixing use of `import` vs `require` `KAJ-1926`
-- `distant-controller`
-  - Fixing vchannel access `KAJ-1926`
+- `distant-web`'s use of `import` vs `require`. `KAJ-1926`
+- `distant-controller` - Add resilience to vchannel import. `KAJ-1926`
 
 ## 1.2.0 - 2023-09-13
 ### Added

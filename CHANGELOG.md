@@ -3,10 +3,13 @@
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
-## 1.2.1 - 2023-10-03
+## 1.2.1 - 2023-11-06
 ### Fixed
 - `distant-web`'s use of `import` vs `require`. `KAJ-1926`
 - `distant-controller` - Add resilience to vchannel import. `KAJ-1926`
+- `distant-remote`
+  - Add protection against invalid bounds object `KAJ-1949`
+  - Improve compatibility with older Distant VDI platform loads
 
 ## 1.2.0 - 2023-09-13
 ### Added

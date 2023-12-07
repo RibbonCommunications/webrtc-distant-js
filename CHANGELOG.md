@@ -3,6 +3,10 @@
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 1.2.2 - 2023-12-07
+### Fixed
+- `distant-web`'s Electron dependency is updated to 23.2.2 to match other products/apps `KAJ-1985`
+
 ## 1.2.1 - 2023-11-06
 ### Fixed
 - `distant-web`'s use of `import` vs `require`. `KAJ-1926`

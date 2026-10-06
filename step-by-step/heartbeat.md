@@ -7,7 +7,7 @@ The Distant Toolkit provides complete, bi-directional, end-to-end heartbeating b
 ## Setup
 
 ### 1. Default behaviour
-Heartbeating is enabled by default, and is configured on a per-session basis by calling `createSession` on your controller object. The heartbeat begins as soon as your session status is in a `READY` state.
+Heartbeating is disabled by default, and must be explicitly enabled on a per-session basis by calling `startHeartbeat` on your session object (the object returned by `createSession`). Heartbeating will only begin if your session status is in a `READY` state.
 
 ```javascript
 import { createController } from '@rbbn/distant'
@@ -20,6 +20,9 @@ const session = await controller.createSession({
   id: 1,
   targetUrl: 'https://your-remote-application.com'
 })
+
+// Start heartbeating
+session.startHeartbeat()
 ```
 
 ### 2. Receiving Events
@@ -31,49 +34,25 @@ session.on('heartbeatLost', event => {
 })
 ```
 
-### 3. Disabling
-You can disable Heartbeating through the `heartbeatInterval` property of the object passed to `createController` by setting its value to `0`.
+### 3. Custom Values
+By default, heartbeating is started with an interval of 2 seconds (2000ms) and a maximum of 3 timeouts before the `heartbeatLost` event is emitted. 
+If you wish to enable heartbeating with different values, you can pass them as arguments to the `startHeartbeat` method. Note that interval units are expressed in milliseconds (ms) and the interval value **must be at least** `200` in order for it to be active.
 
 ```javascript
 const session = await controller.createSession({
   id: 1,
-  targetUrl: 'https://your-remote-application.com',
-  heartbeatInterval: 0
-})
-```
-
-### 4. Custom Values
-If you wish for Heartbeating to be enabled with your own custom values, you can pass values for `heartbeatInterval` and `maxTimeouts`, which default to `2000` and `3` respectively. Note that interval units are expressed in milliseconds (ms) and the `heartbeatInterval` value **must be set to at least** `200` in order for it to be active.
-
-```javascript
-const session = await controller.createSession({
-  id: 1,
-  targetUrl: 'https://your-remote-application.com',
-  heartbeatInterval: 3000,
-  maxTimeouts: 5
-})
-```
-
-### 5. Custom Behaviour
-If you wish to have complete control over *when* heartbeating begins, you can choose to disable heartbeat initially, and then call `startHeartbeat` on your `session` object at an arbitrary timepoint. Please remember that heartbeating will **not** begin unless the interval value is above 200 and the session status is in `READY` state.
-
-```javascript
-const session = await controller.createSession({
-  id: 1,
-  targetUrl: 'https://your-remote-application.com',
-  heartbeatInterval: 0
+  targetUrl: 'https://your-remote-application.com'
 })
 
-... // Session creation is successful, but Heartbeating will not start
-
-session.startHeartbeat()
+const heartbeatInterval = 3000
+const maxTimeouts = 5
+session.startHeartbeat(heartbeatInterval, maxTimeouts)
 ```
 
-Alternatively, `session::startHeartbeat` takes two optional parameters which set the interval value and the maximum number of timeouts before the remote application is considered lost.
+### 4. Return value
+The `startHeartbeat` method returns a boolean value indicating whether heartbeating was successfully started. If heartbeating was not started, the method will return `false`.
 
 ```javascript
-const optionalHeartbeatInterval = 2000
-const optionalMaxTimeouts = 3
-
-session.startHeartbeat(optionalHeartbeatInterval, optionalMaxTimeouts)
+const result = session.startHeartbeat()
+console.log(`Heartbeating started: ${result}`)
 ```

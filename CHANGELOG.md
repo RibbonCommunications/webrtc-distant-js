@@ -3,6 +3,16 @@
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 1.3.0 - 2026-10-
+### Added
+- Platform heartbeating. See [feature documentation](./step-by-step/heartbeat.md).
+### Changed
+- `distant-utils`
+  - Added sessionId parameter to heartbeat lost event `KAJ-2456`
+- All packages now distributed as standard ESM modules
+### Removed
+- typescript definitions (index.d.ts files) from all packages
+
 ## 1.2.2 - 2023-12-07
 ### Fixed
 - `distant-web`'s Electron dependency is updated to 23.2.2 to match other products/apps `KAJ-1985`

@@ -5,10 +5,8 @@
 
 ## 1.3.0 - 2026-10-
 ### Added
-- Platform heartbeating. See [feature documentation](./step-by-step/heartbeat.md).
+- [Platform heartbeating](./step-by-step/heartbeat.md)
 ### Changed
-- `distant-utils`
-  - Added sessionId parameter to heartbeat lost event `KAJ-2456`
 - All packages now distributed as standard ESM modules
 ### Removed
 - typescript definitions (index.d.ts files) from all packages

@@ -3,6 +3,15 @@
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 1.3.0 - 2026-10-29
+### Added
+- [Platform heartbeating](./step-by-step/heartbeat.md)
+### Changed
+- All packages now distributed as standard ESM modules
+- All packages updated for use in Node 22 and Electron 41 environments, as applicable
+### Removed
+- typescript definitions (index.d.ts files) from all packages
+
 ## 1.2.2 - 2023-12-07
 ### Fixed
 - `distant-web`'s Electron dependency is updated to 23.2.2 to match other products/apps `KAJ-1985`
